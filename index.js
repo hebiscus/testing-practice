@@ -56,7 +56,27 @@ function caesarCipher(string, key) {
     return finalCypher
 }
 
-function analyzeArray() {
+function analyzeArray(array) {
+    let resultObject = {
+        average: function average(array) {
+            let sumValues = array.reduce(total, item => total + item);
+            return sumValues / resultObject.length;
+        },
 
+        min: function min(array) {
+            return Math.min(...array);
+        },
+        max: function max(array) {
+            return Math.max(...array);
+        },
+        length: function length(array) {
+            return array.length;
+        }
+    };
+
+    return resultObject;
 }
- console.log(caesarCipher("a bcz y", 25))
+
+//  console.log(caesarCipher("a bcz y", 25))
+
+console.log(analyzeArray([1,2,3]))
