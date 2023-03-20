@@ -34,13 +34,19 @@ function caesarCipher(string, key) {
     
     function findInAlphabet(letter) {
         for (let i = 0; i < alphabetArray.length; i++) {
+            if (letter == " ") {
+                return letter;
+            }
             if (letter == alphabetArray[i]) {
                 return alphabetArray.indexOf(alphabet[i]);
-            }
+            } 
         }
     }
 
     function shiftLetter(letterPlace) {
+        if (typeof letterPlace != "number") {
+            return letterPlace
+        }
         if (letterPlace + key >= alphabetArray.length) {
             return alphabetArray[(letterPlace + key) % alphabetArray.length] 
         }
@@ -53,4 +59,4 @@ function caesarCipher(string, key) {
 function analyzeArray() {
 
 }
- console.log(caesarCipher("abczy", 25))
+ console.log(caesarCipher("a bcz y", 25))
