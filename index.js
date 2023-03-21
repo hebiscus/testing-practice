@@ -68,26 +68,22 @@ function caesarCipher(string, key) {
 }
 
 function analyzeArray(array) {
-    let resultObject = {
-        average: function average(array) {
-            let sumValues = array.reduce((total, item) => total + item);
-            return sumValues / resultObject.length(array);
-        },
 
-        min: function min(array) {
-            return Math.min(...array);
-        },
-        max: function max(array) {
-            return Math.max(...array);
-        },
-        length: function length(array) {
-            return array.length;
-        }
+    function average(array) {
+        let sumValues = array.reduce((total, item) => total + item);
+        return sumValues ;
+    }
+
+    let resultObject = {
+        length: array.length,
+        average: average(array) / array.length,
+        min: Math.min(...array),
+        max: Math.max(...array)
     };
 
-    return resultObject.average(array);
+    return resultObject;
 }
 
- console.log(caesarCipher("A#AA6 A", 15))
+//  console.log(caesarCipher("A#AA6 A", 15))
 
-// console.log(analyzeArray([1,2,3]))
+console.log(analyzeArray([10,3,3]))
