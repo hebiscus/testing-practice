@@ -29,27 +29,37 @@ function caesarCipher(string, key) {
 
     for (let i = 0; i < stringToArray.length; i++) {
         let letterPlace = findInAlphabet(stringToArray[i]);
-        finalCypher += shiftLetter(letterPlace);
+        let letterCase = checkCase(stringToArray[i]);
+        finalCypher += shiftLetter(letterPlace, letterCase);
     }
     
+    function checkCase(letter) {
+        return letter == letter.toUpperCase() ? "upper" : "lower";
+    }
+
     function findInAlphabet(letter) {
         for (let i = 0; i < alphabetArray.length; i++) {
             if (letter == " " || !/^[a-zA-Z]+$/.test(letter)) {
-                console.log(letter)
                 return letter;
             }
             if (letter == alphabetArray[i]) {
                 return alphabetArray.indexOf(alphabet[i]);
-            } 
+            } else if (letter.toLowerCase() == alphabetArray[i]) {
+                return alphabetArray.indexOf(alphabet[i]);
+            }
         }
     }
 
-    function shiftLetter(letterPlace) {
+    function shiftLetter(letterPlace, letterCase) {
         if (typeof letterPlace != "number") {
             return letterPlace;
         }
-        if (letterPlace + key >= alphabetArray.length) {
-            return alphabetArray[(letterPlace + key) % alphabetArray.length] 
+        if (letterPlace + key >= alphabetArray.length && letterCase == "upper") {
+            return alphabetArray[(letterPlace + key) % alphabetArray.length].toUpperCase();
+        } else if (letterPlace + key >= alphabetArray.length) {
+            return alphabetArray[(letterPlace + key) % alphabetArray.length];
+        } else if (letterCase == "upper") {
+            return alphabetArray[letterPlace + key].toUpperCase();
         }
         return alphabetArray[letterPlace + key];
     }
@@ -78,6 +88,6 @@ function analyzeArray(array) {
     return resultObject.average(array);
 }
 
- console.log(caesarCipher("abc*&&", 30))
+ console.log(caesarCipher("A#AA6 A", 15))
 
 // console.log(analyzeArray([1,2,3]))
