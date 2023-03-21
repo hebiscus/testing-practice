@@ -1,12 +1,12 @@
-function capitalize(string) {
+export function capitalize(string) {
     return string[0].toUpperCase() + string.slice(1);
 }
 
-function reverseString(string) {
+export function reverseString(string) {
     return string.split("").reverse().join("");
 }
 
-const calculator = {
+export const calculator = {
     add: function(n, m) {
         return n + m;
     }, 
@@ -21,7 +21,7 @@ const calculator = {
     }, 
 }
 
-function caesarCipher(string, key) {
+export function caesarCipher(string, key) {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     const alphabetArray = alphabet.split("");
     const stringToArray = string.split("");
@@ -67,7 +67,7 @@ function caesarCipher(string, key) {
     return finalCypher;
 }
 
-function analyzeArray(array) {
+export function analyzeArray(array) {
 
     function average(array) {
         let sumValues = array.reduce((total, item) => total + item);
@@ -84,6 +84,6 @@ function analyzeArray(array) {
     return resultObject;
 }
 
-//  console.log(caesarCipher("A#AA6 A", 15))
+//  console.log(caesarCipher("As you wish sire!", 5))
 
 console.log(analyzeArray([10,3,3]))
