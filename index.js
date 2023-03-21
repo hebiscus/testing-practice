@@ -34,7 +34,8 @@ function caesarCipher(string, key) {
     
     function findInAlphabet(letter) {
         for (let i = 0; i < alphabetArray.length; i++) {
-            if (letter == " ") {
+            if (letter == " " || !/^[a-zA-Z]+$/.test(letter)) {
+                console.log(letter)
                 return letter;
             }
             if (letter == alphabetArray[i]) {
@@ -45,7 +46,7 @@ function caesarCipher(string, key) {
 
     function shiftLetter(letterPlace) {
         if (typeof letterPlace != "number") {
-            return letterPlace
+            return letterPlace;
         }
         if (letterPlace + key >= alphabetArray.length) {
             return alphabetArray[(letterPlace + key) % alphabetArray.length] 
@@ -53,14 +54,14 @@ function caesarCipher(string, key) {
         return alphabetArray[letterPlace + key];
     }
 
-    return finalCypher
+    return finalCypher;
 }
 
 function analyzeArray(array) {
     let resultObject = {
         average: function average(array) {
-            let sumValues = array.reduce(total, item => total + item);
-            return sumValues / resultObject.length;
+            let sumValues = array.reduce((total, item) => total + item);
+            return sumValues / resultObject.length(array);
         },
 
         min: function min(array) {
@@ -74,9 +75,9 @@ function analyzeArray(array) {
         }
     };
 
-    return resultObject;
+    return resultObject.average(array);
 }
 
-//  console.log(caesarCipher("a bcz y", 25))
+ console.log(caesarCipher("abc*&&", 30))
 
-console.log(analyzeArray([1,2,3]))
+// console.log(analyzeArray([1,2,3]))
