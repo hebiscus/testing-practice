@@ -71,7 +71,7 @@ export function analyzeArray(array) {
 
     function average(array) {
         let sumValues = array.reduce((total, item) => total + item);
-        return sumValues ;
+        return sumValues;
     }
 
     let resultObject = {
@@ -83,7 +83,3 @@ export function analyzeArray(array) {
 
     return resultObject;
 }
-
-//  console.log(caesarCipher("As you wish sire!", 5))
-
-console.log(analyzeArray([10,3,3]))
